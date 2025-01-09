@@ -6,6 +6,7 @@
 3. [重装 Ubuntu 系统](#重装-ubuntu-系统)
 4. [Ubuntu 安装过程](#ubuntu-安装过程)
 5. [安装后配置：使用 LVM 合并硬盘](#安装后配置使用-lvm-合并硬盘)
+
 6. [创建带自定义主目录的新用户](#创建带自定义主目录的新用户)
 7. [配置 SSH 进行远程访问](#配置-ssh-进行远程访问)
 
@@ -180,25 +181,61 @@ username : username sudo
 
 ## 🔐 **配置 SSH 进行远程访问**
 
-### 🔧 步骤 1：安装 **VS Code Remote - SSH** 插件
+### 📌 **在服务器上设置 SSH**
+
+#### ✅ **Step 1: 更新软件包列表**
+```bash
+sudo apt update
+```
+
+#### ✅ **Step 2: 安装 OpenSSH 服务器**
+```bash
+sudo apt install openssh-server -y
+```
+
+#### ✅ **Step 3: 检查 SSH 服务状态**
+```bash
+sudo systemctl status ssh
+```
+> 你应该看到类似 "active (running)" 的信息。
+
+如果未运行，可以使用以下命令启动：
+```bash
+sudo systemctl start ssh
+```
+
+#### ✅ **Step 4: 设置 SSH 开机自启**
+```bash
+sudo systemctl enable ssh
+```
+
+---
+
+### 🖥️ **在 VS Code 上配置 SSH**
+
+#### 🔧 **步骤 1：安装 VS Code 的 Remote - SSH 插件**
 
 1. 打开 **Visual Studio Code**。
-2. 前往左侧的 **扩展** 面板。
+2. 进入左侧的 **扩展** 面板。
 3. 搜索 **Remote - SSH** 并安装该插件。
 
-### 🔧 步骤 2：配置 SSH 服务器
+---
 
-1. 打开 VS Code 的 **命令面板**：
+#### 🔧 **步骤 2：配置 SSH 服务器**
+
+1. 打开 **VS Code 命令面板**：
    - **macOS**：`Cmd + Shift + P`
    - **Windows/Linux**：`Ctrl + Shift + P`
-2. 搜索 **Remote-SSH: Add New SSH Host** 并选择它。
+2. 搜索 **Remote-SSH: Add New SSH Host** 并选择。
 3. 输入你的 SSH 服务器地址：
    ```bash
    ssh username@ip_address
    ```
 4. 选择保存到 **~/.ssh/config** 文件。
 
-### 🛠 步骤 3：检查 SSH 配置
+---
+
+#### 🛠 **步骤 3：检查 SSH 配置文件**
 
 确保你的 **~/.ssh/config** 文件包含以下内容：
 ```ssh
@@ -208,17 +245,24 @@ Host myserver
     IdentityFile ~/.ssh/id_rsa
 ```
 
-### 🔧 步骤 4：上传公钥到服务器
+---
+
+#### 🔧 **步骤 4：上传公钥到服务器**
+
+将你的本地公钥上传到服务器，以实现无密码登录：
 ```bash
 ssh-copy-id username@ip_address
 ```
 
-### 🔧 步骤 5：通过 VS Code 连接 SSH 服务器
+---
 
-1. 再次打开 **命令面板**。
+#### 🔧 **步骤 5：通过 VS Code 连接 SSH 服务器**
+
+1. 再次打开 **VS Code 命令面板**。
 2. 搜索 **Remote-SSH: Connect to Host**。
-3. 选择配置的服务器（例如 **myserver**）。
-4. 等待 VS Code 自动下载服务器组件。
+3. 选择你配置的服务器（例如 **myserver**）。
+4. 等待 VS Code 自动下载并安装所需的服务器组件。
 
 ---
+
 
