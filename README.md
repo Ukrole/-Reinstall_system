@@ -240,7 +240,7 @@ sudo systemctl enable ssh
 确保你的 **~/.ssh/config** 文件包含以下内容：
 ```ssh
 Host myserver
-    HostName 10.70.150.150
+    HostName ip_address
     User your_username
     IdentityFile ~/.ssh/id_rsa
 ```
