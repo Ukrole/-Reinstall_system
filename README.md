@@ -15,7 +15,7 @@
 
 ### 1️⃣ 下载 Ubuntu 22.04.05 镜像文件
 
-- 访问 [Ubuntu 官方网站](https://ubuntu.com/download/desktop)。
+- 访问 [Ubuntu 官方网站](https://releases.ubuntu.com/?_ga=2.99387670.922309347.1736413746-295320144.1736413746&_gl=1*1oqp5m4*_gcl_au*NzI3MTE2OTg0LjE3MzY0NjU5NjM.)。
 - 选择 **Ubuntu 22.04.05** 版本。
 
 ### 2️⃣ 下载并安装 U 盘启动盘制作工具
