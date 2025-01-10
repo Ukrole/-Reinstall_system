@@ -101,7 +101,7 @@ sudo pvcreate /dev/nvme0n1 /dev/sda
 ### 4️⃣ 创建卷组（VG）：
 ```bash
 sudo vgcreate vg_data /dev/nvme0n1 /dev/sda
-sudo vgs
+sudo vgs # 找到卷组的名字,后续步骤需要将vg_data改成卷组的名字
 ```
 
 ### 5️⃣ 创建逻辑卷（LV）：
